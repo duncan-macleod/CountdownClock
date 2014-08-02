@@ -1,0 +1,19 @@
+<html ng-app='countdown'>
+	<head>
+		<link rel="stylesheet" type="text/css" href="clock.css">
+		<script type="text/javascript" src="angular.min.js"></script>
+		<script type="text/javascript" src="timecontroller.js"></script>
+	</head>
+
+	<body>		
+		<div class="time" ng-controller="TimeController as timer">
+			<div ng-hide="timer.counting">
+				<input ng-class = "{error : !timer.isValid()}" type="int" ng-model="timer.currentTime" placeholder="input a number 1 - 20"/>
+				<div class = "error small" ng-hide="timer.isValid()">value must be an integer between {{timer.min}} and {{timer.max}}</div>
+				<button ng-hide="timer.counting" ng-click="timer.start_countdown()">Start</button>
+			</div>
+			<div class="currentTime" ng-hide="!timer.counting"  ng-style="timer.customStyle.style" >{{timer.currentTime}}</div>
+			<button ng-hide="!timer.counting" ng-click="timer.stop_countdown()">Stop</button>
+		</div>
+	</body>
+</html>
